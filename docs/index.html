@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sorbo · Las noticias en un sorbo</title>
+  <meta name="description" content="Las noticias más importantes del día, para leer mientras te tomas el café.">
+  <meta name="theme-color" content="#F5EEE4">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Sorbo">
+  <link rel="preload" href="assets/fonts/Lora.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="main" aria-live="polite"></main>
+
+  <nav class="tabbar" aria-label="Secciones">
+    <button data-tab="hoy" class="on" aria-label="Hoy">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6V8Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3.5c0 1 1 1.2 1 2.2M12 3.5c0 1 1 1.2 1 2.2"/></svg>
+      <span>Hoy</span>
+    </button>
+    <button data-tab="parati" aria-label="Para ti">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/><path d="M13 4h5.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H13V4Z"/></svg>
+      <span>Para ti</span>
+    </button>
+    <button data-tab="buscar" aria-label="Buscar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+      <span>Buscar</span>
+    </button>
+    <button data-tab="guardadas" aria-label="Guardadas">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4V4Z"/></svg>
+      <span>Guardadas</span>
+    </button>
+  </nav>
+
+  <div id="layer"></div>
+  <div id="toast" role="status"></div>
+
+  <noscript>
+    <p style="padding:24px;font-family:sans-serif">Sorbo necesita JavaScript activado para mostrar las noticias.</p>
+  </noscript>
+  <script src="app.js"></script>
+</body>
+</html>
