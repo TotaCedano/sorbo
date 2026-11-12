@@ -48,13 +48,13 @@ def streak(log: dict, d: date | None = None) -> int:
 
 # -------------------------------------------------------------- dato del día
 
-_SAD = re.compile(r"muert|falleci|víctima|victima|herid|asesin|homicid|violaci|abus|suicid|cadáver|tiroteo|masacre",
+_SAD = re.compile(r"disturbio|detenid|muert|falleci|víctima|victima|herid|asesin|homicid|violaci|abus|suicid|cadáver|tiroteo|masacre",
                   re.IGNORECASE)
 _MONEY = re.compile(r"(?:US\$|USD|\$|€|£)\s?\d[\d.,]*(?:\s?(?:mil millones|millones|millón|billones|mil|bn|m)\b)?",
                     re.IGNORECASE)
 _PCT = re.compile(r"\d[\d.,]*\s?%")
 _BIG = re.compile(r"\b\d[\d.,]*\s(?:mil millones|millones|millón|mil|billones|toneladas|kilómetros|km|grados|"
-                  r"usuarios|empleos|clientes|startups|empresas|países|años)\b", re.IGNORECASE)
+                  r"usuarios|empleos|clientes|startups|empresas|países)\b", re.IGNORECASE)
 
 
 def fact_of_the_day(articles: list[Article]) -> dict | None:

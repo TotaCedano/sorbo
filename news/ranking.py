@@ -41,15 +41,19 @@ def top_stories(articles: list[Article], n: int = 8) -> list[Article]:
     scores = importance_scores(articles)
     ranked = sorted(articles, key=lambda a: scores[a.id], reverse=True)
     # evita que un mismo tema o medio acapare el top
-    picked, used_tokens, per_source = [], [], {}
+    picked, used_tokens, per_source, token_uses = [], [], {}, {}
     for a in ranked:
         toks = title_tokens(a.title)
-        if any(len(toks & t) >= 3 for t in used_tokens):
+        if any(len(toks & t) >= 2 for t in used_tokens):
+            continue
+        if any(token_uses.get(t, 0) >= 2 for t in toks):   # máximo 2 noticias por tema (ej. "recesión")
             continue
         if per_source.get(a.source, 0) >= 2:
             continue
         picked.append(a)
         used_tokens.append(toks)
+        for t in toks:
+            token_uses[t] = token_uses.get(t, 0) + 1
         per_source[a.source] = per_source.get(a.source, 0) + 1
         if len(picked) >= n:
             break
